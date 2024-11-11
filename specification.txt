@@ -1,0 +1,4 @@
+10 HTML tags used are: nav, div, h1, h4, h5, p, img, footer, a, input
+5 CSS properties you’ve used: font-family, text-align, flex, text-decoration, padding
+
+I used the JavaScript to dynamically load a reusable navigation bar across multiple pages, while Bootstrap to provide responsive styling for layout, cards, and navbar.

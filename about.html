@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bella Crafts</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch('navbar.html')
+                    .then(response => response.text())
+                    .then(data => document.getElementById('navbar').innerHTML = data);
+            });
+
+            function submitForm() {
+                // Regular expression for validating an email address
+                let email = document.getElementById("emailField").value;
+                let message = document.getElementById("messageField").value;
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (emailPattern.test(email) && message.trim() !== "") {
+                    // Email is valid
+                    document.getElementById("result").innerHTML = "Message Sent!";
+                } else {
+                    // Email is invalid
+                    document.getElementById("result").innerHTML = "Please complete the form.";
+
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <!--Navigation bar from bootstrap-->
+        <nav id="navbar"></nav>
+        <header>
+            <h5>New to Bella Crafts?</h5>
+            <h1>Meet Bella</h1>
+            <div class="container">
+                <p>Hi, I'm Bella, creator of Bella Crafts. I'm a mom of two toddlers, and I love to spend my short moments of free time crafting and crocheting. It’s my way to unwind and tap into my creative side. I also enjoy preparing fun and educational activities for my children, making sure they stay engaged and learning. When I'm not focused on motherhood or crafting, my hobby is running, and I'm also passionate about fitness workouts, which helps me stay energized and balanced.<br><br>Thank you for visiting and I hope you stay for a while!</p>
+            </div>
+        </header>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="emailField" class="form-label">Email address:</label>
+                    <input type="email" class="form-control" id="emailField" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="messageField" class="form-label">Enter Message:</label>
+                    <textarea class="form-control" id="messageField" rows="3"></textarea>
+                </div>
+                <input type="button" value="Submit" onclick="submitForm()">'
+            </form>
+            <p id="result"></p>
+        </div>
+        <footer>
+            Created for CS50 &copy; 2024
+        </footer>
+
+    </body>
+    </html>
