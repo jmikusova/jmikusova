@@ -1,0 +1,142 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    /*https://www.freepik.com/free-photo/pasta-ingredient-arranged-circular-frame-wooden-desk_4930701.htm*/
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+header{
+    margin-top: 70px
+}
+
+.logreg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+
+h1 {
+    font-family: fantasy;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+textarea#meal_short {
+    height: 50px;
+    resize: none;
+    overflow: hidden;
+    text-align: left;
+}
+textarea#meal_long {
+    height: 200px;
+    resize: none;
+    overflow: hidden;
+    text-align: left;
+}
+
+.section {
+    padding-bottom: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 0.5rem;
+    justify-content: center;
+}
+
+.section:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+#preview-container img {
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.red {
+    color: red;
+}
+
+.meal-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+}
+
+.caption-bordered {
+    border: 2px solid #007bff; /* Blue border */
+    padding: 8px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px; /* Adjust the gap as needed */
+    justify-content: center;
+}
+
+.preview-photo-container {
+    text-align: center;
+}
+
+.preview-photo-container img {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ccc;
+}
+
+table a {
+    color: blue;
+    text-decoration: none;
+}
+
+table a:hover {
+    color: darkblue;
+}
+
+.add_prevmeal_link {
+    color: red;
+    text-decoration: underline;
+}
+
+.add_prevmeal_link:hover {
+    color: darkred;
+}

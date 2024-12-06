@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+    <div class="container my-4 mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="?week_offset={{ week_offset - 1 }}" class="btn btn-secondary">← Previous Week</a>
+          <h1 class="text-center">Overview of Weeks' Meals</h1>
+            <a href="?week_offset={{ week_offset + 1 }}" class="btn btn-secondary">Next Week →</a>
+        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Date</th>
+                <th>Breakfast</th>
+                <th>Lunch</th>
+                <th>Dinner</th>
+                <th>Snack</th>
+              </tr>
+            </thead>
+            <tbody id="mealTableBody">
+                {% for date, meal in meals.items() %}
+                    <tr>
+                        <td><strong>{{ meal.day_name }} </strong><br> {{ date }}  </td>
+                        <!-- Breakfast -->
+                        <td>
+                            {% if meal.breakfast and meal.breakfast.id %}
+                                <a href="{{ url_for('meal', meal_id=meal.breakfast.id, date=date) }}">
+                                   {% if meal.breakfast.photo_path %}
+                                        <img src="{{ meal.breakfast.photo_path }}" alt="Breakfast Photo" class="meal-photo">
+                                    {% endif %}
+                                    <p>{{ meal.breakfast.short_descr }}</p>
+                                </a>
+                            {% else %}
+                                <a href="{{ url_for('meal', meal_type='breakfast', prev_date=date) }}" class="add_prevmeal_link">
+                                    Add Meal
+                                </a>
+                            {% endif %}
+                        </td>
+                       <!-- Lunch -->
+                       <td>
+                            {% if meal.lunch and meal.lunch.id %}
+                                <a href="{{ url_for('meal', meal_id=meal.lunch.id) }}">
+                                {% if meal.lunch.photo_path %}
+                                        <img src="{{ meal.lunch.photo_path }}" alt="Lunch Photo" class="meal-photo">
+                                    {% endif %}
+                                    <p>{{ meal.lunch.short_descr }}</p>
+                                </a>
+                            {% else %}
+                                <a href="{{ url_for('meal', meal_type='lunch', prev_date=date) }}" class="add_prevmeal_link">
+                                    Add Meal
+                                </a>
+                            {% endif %}
+                        </td>
+                      <!-- Dinner -->
+                      <td>
+                        {% if meal.dinner and meal.dinner.id %}
+                            <a href="{{ url_for('meal', meal_id=meal.dinner.id) }}">
+                            {% if meal.dinner.photo_path %}
+                                    <img src="{{ meal.dinner.photo_path }}" alt="Dinner Photo" class="meal-photo">
+                                {% endif %}
+                                <p>{{ meal.dinner.short_descr }}</p>
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('meal', meal_type='dinner', prev_date=date) }}" class="add_prevmeal_link">
+                                Add Meal
+                            </a>
+                        {% endif %}
+                    </td>
+                      <!-- Snack -->
+                      <td>
+                        {% if meal.snack and meal.snack.id %}
+                            <a href="{{ url_for('meal', meal_id=meal.snack.id) }}">
+                            {% if meal.snack.photo_path %}
+                                    <img src="{{ meal.snack.photo_path }}" alt="Snack Photo" class="meal-photo">
+                                {% endif %}
+                                <p>{{ meal.snack.short_descr }}</p>
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('meal', meal_type='snack', prev_date=date) }}" class="add_prevmeal_link">
+                                Add Meal
+                            </a>
+                        {% endif %}
+                    </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No meals recorded for this week</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+
+{% endblock %}
